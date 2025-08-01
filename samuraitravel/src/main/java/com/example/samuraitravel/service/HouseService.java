@@ -18,5 +18,10 @@ public class HouseService {
     // すべての民宿をページングされた状態で取得する
     public Page<House> findAllHouses(Pageable pageable) {
         return houseRepository.findAll(pageable);
+    }
+    
+    // 指定されたキーワードを民宿名に含む民宿を、ページングされた状態で取得する
+    public Page<House> findHousesByNameLike(String keyword, Pageable pageable) {
+        return houseRepository.findByNameLike("%" + keyword + "%", pageable);
     }  
 }
